@@ -1,0 +1,15 @@
+{
+  "name": "datis",
+  "description": "Datis assignment",
+  "version": "1.0.0",
+  "homepage": "https://github.com/SatheeshKurunthiah/Datis.git",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.7.7",
+    "angular-loader": "^1.7.7",
+    "angular-mocks": "^1.7.7",
+    "angular-ui-router": "^1.0.20",
+    "html5-boilerplate": "^7.0.1"
+  }
+}

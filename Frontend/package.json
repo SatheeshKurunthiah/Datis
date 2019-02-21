@@ -1,0 +1,22 @@
+{
+  "name": "datis",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Datis assignment",
+  "repository": "https://github.com/SatheeshKurunthiah/Datis.git",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.8.8",
+    "http-server": "^0.9.0"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "update-deps": "npm update",
+    "postupdate-deps": "bower update",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1 ./app"
+  },
+  "dependencies": {
+    "npm": "^5.10.0"
+  }
+}
