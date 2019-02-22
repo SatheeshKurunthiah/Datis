@@ -1,0 +1,51 @@
+<div class="row">
+    <div align="center" style="margin-bottom: 25px; margin-top: 25px;">
+        <button ng-click="addDialog.open()" type="button" class="btn btn-success btn-lg"><span
+                class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+
+    <table class="table table-hover table-responsive">
+        <tr>
+            <th rowspan="1">Name</th>
+            <th rowspan="1">Base Pay</th>
+            <th colspan="3" scope="colgroup">Deductions</th>
+            <th rowspan="1">TakeHome</th>
+            <th rowspan="1">Edit</th>
+            <th rowspan="1">Delete</th>
+        </tr>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Medical</th>
+            <th scope="col">Dental</th>
+            <th scope="col">401K</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        <tr ng-repeat="employee in employees">
+            <td>{{employee.name}}</td>
+            <td>{{employee.base}}</td>
+            <td>{{employee.medical}}</td>
+            <td>{{employee.dental}}</td>
+            <td>{{employee['401k']}}</td>
+            <td>{{employee.takeHome}}</td>
+            <td>
+                <button type="button" ng-click="editDialog.open(employee, 'update')"
+                        class="update btn btn-warning btn-sm"><span
+                        class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </td>
+            <td>
+                <button type="button" ng-click="deleteDialog.open(employee)" class="delete btn btn-danger btn-sm"><span
+                        class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<employee-form callback="addCallback(employee)" model="addDialog"></employee-form>
+<employee-form model="editDialog"></employee-form>
+<delete-employee-dialog callback="deleteCallback(employee)" model="deleteDialog"></delete-employee-dialog>

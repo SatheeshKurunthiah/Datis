@@ -31,6 +31,7 @@ let calculateDeduction = function (base, deductions) {
     return deductionSum;
 };
 
+// Calculate take home salary before storing the employee in DB
 EmployeeSchema.pre('save', function (next) {
     let item = this;
 

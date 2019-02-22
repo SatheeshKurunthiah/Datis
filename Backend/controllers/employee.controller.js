@@ -31,7 +31,7 @@ exports.create = function (req, res) {
         {
             name: req.body.name,
             base: req.body.base,
-            deduction: req.body.deduction
+            deduction: [req.body.medical, req.body.dental, req.body['401k']]
         }
     );
 
@@ -39,7 +39,7 @@ exports.create = function (req, res) {
         if (err) {
             return next(err);
         }
-        res.send('Employee created successfully')
+        res.status(200).send({message: 'Employee created successfully'});
     });
 };
 
@@ -50,17 +50,24 @@ exports.update = function (req, res) {
         if (err) {
             return next(err);
         }
+        if (employee === null) {
+            return res.status(404).send({message: 'User not found'});
+        }
 
         employee.name = req.body.name || employee.name;
         employee.base = req.body.base || employee.base;
-        employee.deduction = req.body.deduction || employee.deduction;
+        employee.deduction = [
+            req.body.medical || employee.deduction[0],
+            req.body.dental || employee.deduction[1],
+            req.body['401k'] || employee.deduction[2]
+        ];
 
-        employee.save(function (err) {
-            if (err) {
-                return next(err);
-            }
-            res.send('Employee updated successfully')
-        })
+        employee.save().then(function (item) {
+            res.status(200).send({
+                message: 'Employee updated successfully',
+                takeHome: item.takeHome
+            });
+        });
     });
 };
 
@@ -75,6 +82,6 @@ exports.delete = function (req, res) {
         if (err) {
             return next(err);
         }
-        res.send('Employee deleted successfully!');
+        res.status(200).send({message: 'Employee deleted successfully!'});
     })
 };

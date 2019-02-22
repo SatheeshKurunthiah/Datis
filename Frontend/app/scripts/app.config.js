@@ -3,6 +3,12 @@
 angular.module('datis').config(function ($urlRouterProvider, $stateProvider, $httpProvider, API_URL) {
 
     $urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('employee', {
+            url: '/',
+            templateUrl: '../views/employee.html',
+            controller: 'employeeCtrl'
+        });
 })
 
     .constant('API_URL', 'http://localhost:8001/')
