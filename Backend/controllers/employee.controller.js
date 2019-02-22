@@ -35,11 +35,11 @@ exports.create = function (req, res) {
         }
     );
 
-    employee.save(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.status(200).send({message: 'Employee created successfully'});
+    employee.save().then(function (item) {
+        res.status(200).send({
+            message: 'Employee created successfully',
+            takeHome: item.takeHome
+        });
     });
 };
 

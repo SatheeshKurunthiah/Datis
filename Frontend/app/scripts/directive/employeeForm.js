@@ -24,6 +24,7 @@ angular.module('datis').directive('employeeForm', ['employeeService', function (
                     });
                 } else {
                     employeeService.addEmployee(employee).then(function (res) {
+                        employee.takeHome = res.data.takeHome;
                         scope.callback({
                             employee: employee,
                         });
