@@ -24,7 +24,15 @@ angular.module('datis').controller('employeeCtrl', function ($scope, $state, $ht
     $scope.deleteDialog = new dialogModel();
 
     $scope.addCallback = function (employee) {
+        employee.originalName = employee.name;
         $scope.employees.push(employee);
+    };
+
+    $scope.editCallback = function (employee) {
+        let index = $scope.employees.indexOf(employee);
+        if (index !== -1) {
+            $scope.employees[index].originalName = employee.name;
+        }
     };
 
     $scope.deleteCallback = function (employee) {

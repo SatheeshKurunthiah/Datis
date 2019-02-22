@@ -17,6 +17,9 @@ angular.module('datis').directive('employeeForm', ['employeeService', function (
                 if (this.model.type === 'update') {
                     employeeService.updateEmployee(employee).then(function (res) {
                         employee.takeHome = res.data.takeHome;
+                        scope.callback({
+                            employee: employee,
+                        });
                         console.log(res.data.message);
                     });
                 } else {

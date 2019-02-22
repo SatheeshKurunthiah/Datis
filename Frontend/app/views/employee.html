@@ -47,5 +47,5 @@
 </div>
 
 <employee-form callback="addCallback(employee)" model="addDialog"></employee-form>
-<employee-form model="editDialog"></employee-form>
+<employee-form callback="editCallback(employee)" model="editDialog"></employee-form>
 <delete-employee-dialog callback="deleteCallback(employee)" model="deleteDialog"></delete-employee-dialog>
